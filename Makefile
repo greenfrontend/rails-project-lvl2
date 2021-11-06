@@ -17,4 +17,7 @@ ci-setup:
 	bundle install --without production development
 	RAILS_ENV=test bin/rails db:prepare
 
+start:
+	bin/rails s
+
 .PHONY: test

@@ -5,3 +5,9 @@ Style/Documentation:
 
 Rails/FilePath:
   Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
