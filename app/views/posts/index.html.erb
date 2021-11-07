@@ -1,0 +1,21 @@
+<h1>Posts</h1>
+
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-md-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h2 class="h5 card-title">
+            <%= link_to post.title, post_path(post) %>
+          </h2>
+          <div class="card-text mb-2"><%= post.body %></div>
+          <div class="text-right small text-muted mt-auto">
+            <span class="me-2"><%= time_ago_in_words(post.created_at) %></span>
+            <span><%= post.creator.email %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

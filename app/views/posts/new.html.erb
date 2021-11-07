@@ -1,0 +1,6 @@
+<%= simple_form_for @post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body, as: :text %>
+  <%= f.association :post_category %>
+  <%= f.button :submit, class: "mt-2 btn-primary" %>
+<% end %>

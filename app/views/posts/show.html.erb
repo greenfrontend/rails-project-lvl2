@@ -1,0 +1,22 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to 'All posts', root_path %>
+  </li>
+  <li class="breadcrumb-item active">
+    <%= @post.post_category.name %>
+  </li>
+</ol>
+
+<div class="row justify-content-center mt-4">
+  <article class="col-12">
+    <h1 class="mb-4 mb-lg-5"><%= @post.title %></h1>
+    <p><%= @post.body %></p><p></p>
+    <div class="d-flex justify-content-between mt-5">
+      <div id="post-section">
+        <span class="me-2"><%= @post.creator.email %></span>
+        <span><%= time_ago_in_words(@post.created_at) %></span>
+      </div>
+    </div>
+  </article>
+</div>
+
