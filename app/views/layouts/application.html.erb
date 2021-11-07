@@ -10,7 +10,44 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column h-100">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <%= link_to 'Home', root_path, class: "navbar-brand" %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to 'Log in', new_user_session_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Hexlet</span>
+      </div>
+    </footer>
   </body>
 </html>
