@@ -20,4 +20,7 @@ ci-setup:
 start:
 	bin/rails s
 
+console:
+	bin/rails console
+
 .PHONY: test
