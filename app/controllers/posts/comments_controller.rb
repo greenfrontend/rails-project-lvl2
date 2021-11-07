@@ -17,7 +17,7 @@ module Posts
     private
 
     def post_comment_params
-      params.require(:post_comment).permit(:content)
+      params.require(:post_comment).permit(:content, :parent_id)
     end
   end
 end

@@ -1,0 +1,38 @@
+<div class="card mt-4 mb-4">
+  <div class="card-header small mb-2 d-flex">
+    <div id="comment-28">
+      <span class="font-weight-bold"><%= post_comment.user.email %></span>
+      <span class="mx-2 font-weight-light"><%= time_ago_in_words(post_comment.created_at) %></span>
+    </div>
+  </div>
+
+  <div class="card-body d-flex">
+    <div class="w-100">
+      <div class="mb-3"><%= post_comment.content %></div>
+    </div>
+  </div>
+
+  <p>
+    <a 
+      class="btn btn-primary" 
+      data-bs-toggle="collapse" 
+      href="#comment-<%= post_comment.id %>" 
+      role="button" 
+      aria-expanded="false" 
+      aria-controls="comment-<%= post_comment.id %>"
+    >
+      Reply
+    </a>
+  </p>
+  <div class="collapse" 
+    id="comment-<%= post_comment.id %>"
+  >
+    <div class="card card-body">
+      <%= simple_form_for @post.post_comments.build, url: post_comments_path(@post) do |f| %>
+        <%= f.input :content, as: :text %>
+        <%= f.hidden_field :parent_id, value: post_comment.id %>
+        <%= f.button :submit, class: "mt-2 btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
