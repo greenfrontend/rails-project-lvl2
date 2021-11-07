@@ -3,4 +3,5 @@
 main > .container {
   padding: 60px 15px 0;
   height: calc(100vh - 56px);
+  overflow: scroll;
 }
