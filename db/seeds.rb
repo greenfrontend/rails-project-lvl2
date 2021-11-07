@@ -9,3 +9,6 @@
 
 PostCategory.create!(name: 'news')
 PostCategory.create!(name: 'events')
+
+User.create!(email: 'test@test.com', password: 'password')
+
