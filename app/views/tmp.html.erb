@@ -1,4 +1,0 @@
-<%= simple_form_for @post.comments.build, url: post_comments_path(@post) do |f| %>
-  <%= f.input :content, as: :text %>
-  <%= f.button :submit, class: "mt-2 btn-primary" %>
-<% end %>
