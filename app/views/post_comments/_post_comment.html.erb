@@ -28,10 +28,14 @@
     id="comment-<%= post_comment.id %>"
   >
     <div class="card card-body">
+      <% if current_user %>
       <%= simple_form_for @post.post_comments.build, url: post_comments_path(@post) do |f| %>
         <%= f.input :content, as: :text %>
         <%= f.hidden_field :parent_id, value: post_comment.id %>
         <%= f.button :submit, class: "mt-2 btn-primary" %>
+      <% end %>
+      <% else %>
+        <%= link_to 'Requires sign in', user_session_path %>
       <% end %>
     </div>
   </div>

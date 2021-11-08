@@ -15,14 +15,24 @@
       <div id="post-section">
         <span class="me-2"><%= @post.creator.email %></span>
         <span><%= time_ago_in_words(@post.created_at) %></span>
+        <p>
+          <%= @post.post_likes.count %>
+          <% if destroy_like?(@post.post_likes, current_user) %>
+            <%= link_to 'Like', post_like_path(@post.id, @post.post_likes.find_by(user_id: current_user.id).id), method: :delete %>
+          <% else %>
+            <%= link_to 'Like', post_likes_path(@post), method: :post %>
+          <% end %>
+        </p>
       </div>
     </div>
   </article>
 </div>
 
-<%= simple_form_for @post.post_comments.build, url: post_comments_path(@post) do |f| %>
-  <%= f.input :content, as: :text %>
-  <%= f.button :submit, class: "mt-2 btn-primary" %>
+<% if current_user %>
+  <%= simple_form_for @post.post_comments.build, url: post_comments_path(@post) do |f| %>
+    <%= f.input :content, as: :text %>
+    <%= f.button :submit, class: "mt-2 btn-primary" %>
+  <% end %>
 <% end %>
 
 <%= nested_comments(@post.post_comments.arrange(:order => :created_at)) %>
