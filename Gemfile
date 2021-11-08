@@ -67,3 +67,4 @@ gem 'ancestry'
 gem 'devise'
 gem 'rubocop-rails', require: false
 gem 'simple_form'
+gem 'minitest-power_assert'
