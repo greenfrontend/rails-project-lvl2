@@ -11,6 +11,3 @@ Layout/LineLength:
 
 Metrics/BlockLength:
   Enabled: false
-
-Rails/OutputSafety:
-  Enabled: false
