@@ -65,6 +65,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'ancestry'
 gem 'devise'
+gem 'minitest-power_assert'
 gem 'rubocop-rails', require: false
 gem 'simple_form'
-gem 'minitest-power_assert'
