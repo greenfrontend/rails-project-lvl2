@@ -6,7 +6,7 @@ module Posts
       return redirect_to user_session_path, notice: 'You should be signed in' unless current_user
 
       post = Post.find(params[:post_id])
-      like = post.post_likes.build
+      like = post.likes.build
       like[:user_id] = current_user.id
 
       if like.save
@@ -18,7 +18,7 @@ module Posts
 
     def destroy
       post = Post.find(params[:post_id])
-      like = post.post_likes.find_by(id: params[:id])
+      like = post.likes.find_by(id: params[:id])
 
       if like.destroy
         redirect_to post
