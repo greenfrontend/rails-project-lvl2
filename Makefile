@@ -29,4 +29,10 @@ reset:
 	bin/rails db:migrate
 	bin/rails db:seed
 
+install:
+	bundle install
+	yarn install
+
+up: install reset start
+
 .PHONY: test

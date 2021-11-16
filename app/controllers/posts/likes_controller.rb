@@ -5,26 +5,23 @@ module Posts
     def create
       return redirect_to user_session_path, notice: 'You should be signed in' unless current_user
 
-      post = Post.find(params[:post_id])
-      like = post.likes.build
-      like[:user_id] = current_user.id
+      @like = post.likes.build(user: current_user)
+      @like.save
 
-      if like.save
-        redirect_to post
-      else
-        redirect to post
-      end
+      redirect_to post_path(post)
     end
 
     def destroy
-      post = Post.find(params[:post_id])
-      like = post.likes.find_by(id: params[:id])
+      @like = post.likes.find_by!(id: params[:id])
+      @like.destroy
 
-      if like.destroy
-        redirect_to post
-      else
-        redirect to post
-      end
+      redirect_to post_path(post)
+    end
+
+    private
+
+    def post
+      @post = Post.find(params[:post_id])
     end
   end
 end
